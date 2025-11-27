@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package data.set.explorer.model;
 
 /**
  *
  * @author daviddoherty
  */
-public class Statistics {
-	
+public enum Side {
+	Buy,
+	Sell	
 }
