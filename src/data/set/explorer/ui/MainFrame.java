@@ -18,8 +18,11 @@ public class MainFrame extends javax.swing.JFrame {
 	public MainFrame(DatasetTableModel datasetTableModel) {
 		initComponents();
 		this.datasetTableModel = datasetTableModel;   // or new DatasetTableModel("file.txt");
-		statisticsPanel.setModel(datasetTableModel);
+		transactionsPanel.setModel(this.datasetTableModel);
+		statisticsPanel.setStatistics(this.datasetTableModel);
+		statisticsPanel.setVisible(true);
 	}
+	
 
 	/**
 	 * This method is called from within the constructor to initialize the
@@ -30,9 +33,22 @@ public class MainFrame extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                statisticsPanel = new data.set.explorer.ui.TransactionTable();
+                statisticsPanel = new data.set.explorer.ui.Statistics();
+                transactionsPanel = new data.set.explorer.ui.TransactionTable();
+                search1 = new data.set.explorer.ui.Search();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+                javax.swing.GroupLayout statisticsPanelLayout = new javax.swing.GroupLayout(statisticsPanel);
+                statisticsPanel.setLayout(statisticsPanelLayout);
+                statisticsPanelLayout.setHorizontalGroup(
+                        statisticsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 60, Short.MAX_VALUE)
+                );
+                statisticsPanelLayout.setVerticalGroup(
+                        statisticsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 345, Short.MAX_VALUE)
+                );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -40,15 +56,27 @@ public class MainFrame extends javax.swing.JFrame {
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(statisticsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(12, Short.MAX_VALUE))
+                                .addComponent(transactionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(statisticsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(statisticsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(statisticsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(9, 9, 9)
+                                                .addComponent(transactionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 );
 
                 pack();
@@ -56,6 +84,8 @@ public class MainFrame extends javax.swing.JFrame {
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private data.set.explorer.ui.TransactionTable statisticsPanel;
+        private data.set.explorer.ui.Search search1;
+        private data.set.explorer.ui.Statistics statisticsPanel;
+        private data.set.explorer.ui.TransactionTable transactionsPanel;
         // End of variables declaration//GEN-END:variables
 }

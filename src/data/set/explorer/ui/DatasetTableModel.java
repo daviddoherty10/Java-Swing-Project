@@ -26,6 +26,7 @@ public class DatasetTableModel extends AbstractTableModel {
     };
 
     private final List<Transaction> transactions = new ArrayList<>();
+    
 
     public DatasetTableModel(String filePath) {
 	    DataLoader dataLoader = new DataLoader();
@@ -37,7 +38,7 @@ public class DatasetTableModel extends AbstractTableModel {
 	    }
     }
 
-    // ---------------- TableModel Required Methods ---------------- //
+    //<-------- TableModel Required Methods ---------->
 
     @Override
     public int getRowCount() {
@@ -70,7 +71,7 @@ public class DatasetTableModel extends AbstractTableModel {
         };
     }
 
-    // ---------------- Custom Methods for UI Interaction ---------------- //
+    // <--------- Custom Methods for UI Interaction --------->
 
     public void addTransaction(Transaction t) {
         transactions.add(t);
