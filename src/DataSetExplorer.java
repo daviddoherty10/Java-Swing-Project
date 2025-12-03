@@ -13,8 +13,8 @@ import data.set.explorer.ui.*;
 	
 public class DataSetExplorer {
 	public static void main(String[] args){
-		MainFrame mainFrame = new MainFrame();
+		DatasetTableModel datasetTableModel = new DatasetTableModel("/Users/daviddoherty/TUD/2nd Year/OOPs/Data Set Explorer/Doherty_David.txt");
+		MainFrame mainFrame = new MainFrame(datasetTableModel);
 		mainFrame.setVisible(true);
-		
 	}
 }

@@ -12,9 +12,12 @@ package data.set.explorer.ui;
 
 
 import data.set.explorer.model.Transaction;
+import data.set.explorer.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+
 
 public class DatasetTableModel extends AbstractTableModel {
 
@@ -24,7 +27,15 @@ public class DatasetTableModel extends AbstractTableModel {
 
     private final List<Transaction> transactions = new ArrayList<>();
 
-    public DatasetTableModel() {}
+    public DatasetTableModel(String filePath) {
+	    DataLoader dataLoader = new DataLoader();
+	    try {
+		transactions.addAll(dataLoader.load(filePath));
+	    } catch (IOException e) {
+		    System.err.println("Error while loading file contents");
+		    System.err.println(e);
+	    }
+    }
 
     // ---------------- TableModel Required Methods ---------------- //
 

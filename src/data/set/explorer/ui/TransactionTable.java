@@ -9,19 +9,25 @@ package data.set.explorer.ui;
  * @author daviddoherty
  */
 
+import data.set.explorer.io.*;
+
 
 public class TransactionTable extends javax.swing.JPanel {
 
 	/**
 	 * Creates new form TransactionTable
 	 */
-	private DatasetTableModel tableModel;
+	private DatasetTableModel datasetTableModel;
 
 	public TransactionTable() {
 		initComponents();
-		//tableModel = new DatasetTableModel();
-		//jTable1.setModel(tableModel);
 	}
+	
+	public void setModel(DatasetTableModel model) {
+		this.datasetTableModel = model;
+		transactionsTable.setModel(this.datasetTableModel);
+           // attach model
+    }
 
 	/**
 	 * This method is called from within the constructor to initialize the
@@ -33,31 +39,31 @@ public class TransactionTable extends javax.swing.JPanel {
         private void initComponents() {
 
                 jScrollPane1 = new javax.swing.JScrollPane();
-                jTable1 = new javax.swing.JTable();
-                jButton1 = new javax.swing.JButton();
-                jButton2 = new javax.swing.JButton();
-                jButton3 = new javax.swing.JButton();
+                transactionsTable = new javax.swing.JTable();
+                DeleteRowButton = new javax.swing.JButton();
+                openAddRowDialogButton = new javax.swing.JButton();
+                saveButton = new javax.swing.JButton();
 
-                jTable1.setModel(new DatasetTableModel().getAllTransactions());
-                jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-                jScrollPane1.setViewportView(jTable1);
+                transactionsTable.setModel(transactionsTable.getModel());
+                transactionsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+                jScrollPane1.setViewportView(transactionsTable);
 
-                jButton1.setText("Delete");
-                jButton1.addActionListener(new java.awt.event.ActionListener() {
+                DeleteRowButton.setText("Delete");
+                DeleteRowButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 DeleteRowButtonClicked(evt);
                         }
                 });
 
-                jButton2.setText("Add");
-                jButton2.addActionListener(new java.awt.event.ActionListener() {
+                openAddRowDialogButton.setText("Add");
+                openAddRowDialogButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 addRowButtonClicked(evt);
                         }
                 });
 
-                jButton3.setText("Save");
-                jButton3.addActionListener(new java.awt.event.ActionListener() {
+                saveButton.setText("Save");
+                saveButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 saveButtonPressed(evt);
                         }
@@ -72,9 +78,9 @@ public class TransactionTable extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addComponent(jButton3))
+                                                .addComponent(DeleteRowButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(openAddRowDialogButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(saveButton))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -84,18 +90,18 @@ public class TransactionTable extends javax.swing.JPanel {
                                 .addContainerGap())
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(115, 115, 115)
-                                .addComponent(jButton2)
+                                .addComponent(openAddRowDialogButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addComponent(DeleteRowButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(saveButton)
                                 .addContainerGap(110, Short.MAX_VALUE))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
         private void addRowButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowButtonClicked
 		// TODO add your handling code here:
-		AddRowDialog addRowDialog = new AddRowDialog(null, true, this.tableModel);
+		AddRowDialog addRowDialog = new AddRowDialog(null, true, this.datasetTableModel);
 		addRowDialog.setVisible(true);
         }//GEN-LAST:event_addRowButtonClicked
 
@@ -105,14 +111,16 @@ public class TransactionTable extends javax.swing.JPanel {
 
         private void saveButtonPressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonPressed
 		// TODO add your handling code here:
+		DataSaver dataSaver = new DataSaver("/Users/daviddoherty/TUD/2nd Year/OOPs/Data Set Explorer/Doherty_David.txt");
+		dataSaver.saveToTxt(this.datasetTableModel.getAllTransactions());
         }//GEN-LAST:event_saveButtonPressed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton2;
-        private javax.swing.JButton jButton3;
+        private javax.swing.JButton DeleteRowButton;
         private javax.swing.JScrollPane jScrollPane1;
-        private javax.swing.JTable jTable1;
+        private javax.swing.JButton openAddRowDialogButton;
+        private javax.swing.JButton saveButton;
+        private javax.swing.JTable transactionsTable;
         // End of variables declaration//GEN-END:variables
 }
