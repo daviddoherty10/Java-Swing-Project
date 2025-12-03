@@ -4,6 +4,8 @@
  */
 package data.set.explorer.model;
 
+import data.set.explorer.io.DataSaver;
+
 /**
  *
  * @author daviddoherty
@@ -16,6 +18,7 @@ public class Transaction {
     private final double value;
     private final double fee;
     private final Side side; // "Buy" or "Sell"
+    
 
     public Transaction(
             String txnId,
@@ -59,10 +62,14 @@ public class Transaction {
         return fee;
     }
 
-    public String getSide() {
-        return side;
+    public Side getSide() {
+        return this.side;
     }
-
+    
+    public void deleteRow(){
+	    return;
+    }
+    
     @Override
     public String toString() {
         return txnId + " " +

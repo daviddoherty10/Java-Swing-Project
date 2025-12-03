@@ -8,16 +8,20 @@ package data.set.explorer.ui;
  *
  * @author daviddoherty
  */
+import data.set.explorer.model.*;
+
 public class AddRowDialog extends javax.swing.JDialog {
-	
+
 	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddRowDialog.class.getName());
+	private DatasetTableModel datasetTableModel;
 
 	/**
 	 * Creates new form AddRowDialog
 	 */
-	public AddRowDialog(java.awt.Frame parent, boolean modal) {
+	public AddRowDialog(java.awt.Frame parent, boolean modal, DatasetTableModel datasetTableModel) {
 		super(parent, modal);
 		initComponents();
+		this.datasetTableModel = datasetTableModel;
 	}
 
 	/**
@@ -29,166 +33,262 @@ public class AddRowDialog extends javax.swing.JDialog {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                jButton1 = new javax.swing.JButton();
-                jButton2 = new javax.swing.JButton();
-                jComboBox1 = new javax.swing.JComboBox<>();
-                jTextField1 = new javax.swing.JTextField();
-                jTextField2 = new javax.swing.JTextField();
-                jTextField3 = new javax.swing.JTextField();
-                jTextField4 = new javax.swing.JTextField();
-                jTextField5 = new javax.swing.JTextField();
-                jComboBox2 = new javax.swing.JComboBox<>();
+                addButton = new javax.swing.JButton();
+                cancelButton = new javax.swing.JButton();
+                assetTypeComboBox = new javax.swing.JComboBox<>();
+                transactionIDTextBox = new javax.swing.JTextField();
+                priceTextBox = new javax.swing.JTextField();
+                unitsTextBox = new javax.swing.JTextField();
+                valueTextBox = new javax.swing.JTextField();
+                feeTextBox = new javax.swing.JTextField();
+                sideComboBox = new javax.swing.JComboBox<>();
+                jLabel1 = new javax.swing.JLabel();
+                jLabel2 = new javax.swing.JLabel();
+                jLabel3 = new javax.swing.JLabel();
+                jLabel4 = new javax.swing.JLabel();
+                jLabel5 = new javax.swing.JLabel();
+                jLabel6 = new javax.swing.JLabel();
+                jLabel7 = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
                 setTitle("Hello");
 
-                jButton1.setText("Add");
-
-                jButton2.setText("Cancel");
-                jButton2.addActionListener(new java.awt.event.ActionListener() {
+                addButton.setText("Add");
+                addButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jButton2ActionPerformed(evt);
+                                addButtonActionPerformed(evt);
                         }
                 });
 
-                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bond", "Equity", "Commodity", "Crypto" }));
-
-                jTextField1.setText("Transaction ID");
-
-                jTextField2.setText("Price");
-                jTextField2.addActionListener(new java.awt.event.ActionListener() {
+                cancelButton.setText("Cancel");
+                cancelButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jTextField2ActionPerformed(evt);
+                                cancelButtonActionPerformed(evt);
                         }
                 });
 
-                jTextField3.setText("Units");
-
-                jTextField4.setText("Value");
-
-                jTextField5.setText("Fee");
-                jTextField5.addActionListener(new java.awt.event.ActionListener() {
+                assetTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bond", "Equity", "Commodity", "Crypto" }));
+                assetTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jTextField5ActionPerformed(evt);
+                                assetTypeComboBoxActionPerformed(evt);
                         }
                 });
 
-                jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buy", "Sell" }));
+                transactionIDTextBox.setToolTipText("Transaction ID");
+                transactionIDTextBox.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                transactionIDTextBoxActionPerformed(evt);
+                        }
+                });
+
+                priceTextBox.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                priceTextBoxActionPerformed(evt);
+                        }
+                });
+
+                unitsTextBox.setToolTipText("Units");
+                unitsTextBox.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                unitsTextBoxActionPerformed(evt);
+                        }
+                });
+
+                valueTextBox.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                valueTextBoxActionPerformed(evt);
+                        }
+                });
+
+                feeTextBox.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                feeTextBoxActionPerformed(evt);
+                        }
+                });
+
+                sideComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buy", "Sell" }));
+
+                jLabel1.setText("Transaction ID");
+
+                jLabel2.setText("Asset Type");
+
+                jLabel3.setText("Units");
+
+                jLabel4.setText("Price");
+
+                jLabel5.setText("Value");
+
+                jLabel6.setText("Fee");
+
+                jLabel7.setText("SIde");
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addGap(108, 108, 108)
+                                .addComponent(jLabel6)
+                                .addGap(73, 73, 73))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addGap(202, 202, 202))
+                        .addGroup(layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(16, 16, 16)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton1))
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel2)
+                                                .addGap(77, 77, 77)
+                                                .addComponent(jLabel3)
+                                                .addGap(64, 64, 64))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(20, 20, 20)))
-                                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(55, 55, 55)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(transactionIDTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(priceTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)))
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addContainerGap(75, Short.MAX_VALUE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(cancelButton)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(addButton))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addGap(48, 48, 48)
+                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                        .addComponent(sideComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(valueTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addGap(67, 67, 67))
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addComponent(assetTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(49, 49, 49)))
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(unitsTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(feeTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addContainerGap(44, Short.MAX_VALUE))))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
+                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3))
+                                .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(unitsTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(transactionIDTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(assetTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(1, 1, 1))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel5)
+                                                        .addComponent(jLabel6))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(priceTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(feeTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(valueTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(sideComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jButton2))
+                                        .addComponent(addButton)
+                                        .addComponent(cancelButton))
                                 .addGap(22, 22, 22))
                 );
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-		
+        private void priceTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextBoxActionPerformed
+
+		// TODO add your handling code here:
+        }//GEN-LAST:event_priceTextBoxActionPerformed
+
+        private void feeTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feeTextBoxActionPerformed
+		// TODO add your handling code here:
+        }//GEN-LAST:event_feeTextBoxActionPerformed
+
+        private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+		dispose();
+        }//GEN-LAST:event_cancelButtonActionPerformed
+
+        private void unitsTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitsTextBoxActionPerformed
+		// TODO add your handling code here:
+        }//GEN-LAST:event_unitsTextBoxActionPerformed
+
+        private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+		String txnId = transactionIDTextBox.getText();
+		String asset = (String) assetTypeComboBox.getSelectedItem();
+		double units = Double.parseDouble(unitsTextBox.getText());
+		double price = Double.parseDouble(priceTextBox.getText());
+		double value = Double.parseDouble(valueTextBox.getText());
+		double fee = Double.parseDouble(feeTextBox.getText());
+
+		Side side = (Side) sideComboBox.getSelectedItem();
+
+		Transaction t = new Transaction(
+			txnId,
+			asset,
+			units,
+			price,
+			value,
+			fee,
+			side
+		);
+
+		datasetTableModel.addTransaction(t);
+		this.setVisible(false); // closes dialog
+        }//GEN-LAST:event_addButtonActionPerformed
+
+        private void transactionIDTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionIDTextBoxActionPerformed
+		// TODO add your handling code here:
+        }//GEN-LAST:event_transactionIDTextBoxActionPerformed
+
+        private void assetTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assetTypeComboBoxActionPerformed
                 // TODO add your handling code here:
-        }//GEN-LAST:event_jTextField2ActionPerformed
+        }//GEN-LAST:event_assetTypeComboBoxActionPerformed
 
-        private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        private void valueTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueTextBoxActionPerformed
                 // TODO add your handling code here:
-        }//GEN-LAST:event_jTextField5ActionPerformed
+        }//GEN-LAST:event_valueTextBoxActionPerformed
 
-        private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        }//GEN-LAST:event_jButton2ActionPerformed
-
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		/* Set the Nimbus look and feel */
-		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-			logger.log(java.util.logging.Level.SEVERE, null, ex);
-		}
-		//</editor-fold>
-
-		/* Create and display the dialog */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				AddRowDialog dialog = new AddRowDialog(new javax.swing.JFrame(), true);
-				dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-					@Override
-					public void windowClosing(java.awt.event.WindowEvent e) {
-						System.exit(0);
-					}
-				});
-				dialog.setVisible(true);
-			}
-		});
-	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton2;
-        private javax.swing.JComboBox<String> jComboBox1;
-        private javax.swing.JComboBox<String> jComboBox2;
-        private javax.swing.JTextField jTextField1;
-        private javax.swing.JTextField jTextField2;
-        private javax.swing.JTextField jTextField3;
-        private javax.swing.JTextField jTextField4;
-        private javax.swing.JTextField jTextField5;
+        private javax.swing.JButton addButton;
+        private javax.swing.JComboBox<String> assetTypeComboBox;
+        private javax.swing.JButton cancelButton;
+        private javax.swing.JTextField feeTextBox;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JLabel jLabel2;
+        private javax.swing.JLabel jLabel3;
+        private javax.swing.JLabel jLabel4;
+        private javax.swing.JLabel jLabel5;
+        private javax.swing.JLabel jLabel6;
+        private javax.swing.JLabel jLabel7;
+        private javax.swing.JTextField priceTextBox;
+        private javax.swing.JComboBox<String> sideComboBox;
+        private javax.swing.JTextField transactionIDTextBox;
+        private javax.swing.JTextField unitsTextBox;
+        private javax.swing.JTextField valueTextBox;
         // End of variables declaration//GEN-END:variables
 }

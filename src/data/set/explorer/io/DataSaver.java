@@ -13,9 +13,14 @@ import java.io.*;
 import java.util.List;
 
 public class DataSaver {
+    
+    private String filePath;
+    public DataSaver(String filePath){
+        this.filePath = filePath;
+    }
 
-    public static void saveToTxt(String filePath, List<Transaction> transactions) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+    public void saveToTxt(List<Transaction> transactions) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.filePath))) {
             // Write header
             bw.write("Txn_ID Asset_Class Units Price Value Fee Side");
             bw.newLine();

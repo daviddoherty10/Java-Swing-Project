@@ -19,20 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataLoader {
-
-    /**
-     * Loads transactions from a whitespace-separated .txt file.
-     *
-     * Expected format:
-     * Txn_ID Asset_Class Units Price Value Fee Side
-     */
     public List<Transaction> load(String filePath) throws IOException {
 
         List<Transaction> transactions = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
-            String line = reader.readLine();  // skip header
+            String line = reader.readLine();
             if (line == null) {
                 return transactions;
             }
